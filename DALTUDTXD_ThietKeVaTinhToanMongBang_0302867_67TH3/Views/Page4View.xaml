@@ -1,0 +1,158 @@
+﻿<UserControl x:Class="DALTUDTXD_ThietKeVaTinhToanMongBang_0302867_67TH3.Views.Page4View"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             mc:Ignorable="d"
+             d:DesignHeight="520" d:DesignWidth="960">
+
+    <Grid Background="Transparent">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="380"/>
+            <ColumnDefinition Width="16"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <!-- ═══ CỘT TRÁI: Form nhập ═══ -->
+        <Border Grid.Column="0"
+                Background="{StaticResource panelColorBrush}"
+                BorderBrush="{StaticResource winBorderColor1Brush}"
+                BorderThickness="1" CornerRadius="12"
+                ClipToBounds="True">
+
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="4"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <!-- Thanh accent -->
+                <Border Grid.Column="0" Background="{StaticResource ShellAccentBrush}"/>
+
+                <StackPanel Grid.Column="1" Margin="24,22,24,22">
+
+                    <TextBlock Text="Nhập nội lực"
+                               Style="{StaticResource SectionTitle}" FontSize="16"/>
+                    <TextBlock Text="Chọn móng và điền giá trị tải trọng"
+                               FontSize="11" FontFamily="Segoe UI"
+                               Foreground="{StaticResource plainTextColor1Brush}"
+                               Margin="0,4,0,20"/>
+
+                    <!-- Tên móng -->
+                    <TextBlock Text="Tên móng" Style="{StaticResource FieldLabel}"/>
+                    <ComboBox ItemsSource="{Binding DanhSachMong}"
+                              DisplayMemberPath="TenMong"
+                              SelectedItem="{Binding SelectedMong, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                              Style="{StaticResource ModernComboBox}"
+                              Margin="0,0,0,18"/>
+
+                    <!-- 3 ô nội lực cùng hàng -->
+                    <TextBlock Text="Giá trị nội lực" Style="{StaticResource FieldLabel}"/>
+                    <Grid Margin="0,0,0,20">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="10"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="10"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <StackPanel Grid.Column="0">
+                            <TextBlock Text="Moment (M)" FontSize="11" FontFamily="Segoe UI"
+                                       Foreground="{StaticResource plainTextColor1Brush}" Margin="0,0,0,6"/>
+                            <TextBox x:Name="MomentInput"
+                                     Text="{Binding ForceInput.Moment, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, StringFormat={}{0:N2}}"
+                                     Style="{StaticResource ModernTextBox}"/>
+                        </StackPanel>
+
+                        <StackPanel Grid.Column="2">
+                            <TextBlock Text="Lực dọc (N)" FontSize="11" FontFamily="Segoe UI"
+                                       Foreground="{StaticResource plainTextColor1Brush}" Margin="0,0,0,6"/>
+                            <TextBox x:Name="AxialForceInput"
+                                     Text="{Binding ForceInput.AxialForce, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, StringFormat={}{0:N2}}"
+                                     Style="{StaticResource ModernTextBox}"/>
+                        </StackPanel>
+
+                        <StackPanel Grid.Column="4">
+                            <TextBlock Text="Lực cắt (Q)" FontSize="11" FontFamily="Segoe UI"
+                                       Foreground="{StaticResource plainTextColor1Brush}" Margin="0,0,0,6"/>
+                            <TextBox x:Name="ShearForceInput"
+                                     Text="{Binding ForceInput.ShearForce, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, StringFormat={}{0:N2}}"
+                                     Style="{StaticResource ModernTextBox}"/>
+                        </StackPanel>
+                    </Grid>
+
+                    <!-- Nút hành động -->
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="10"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <Button Grid.Column="0"
+                                Content="ETABS"
+                                Command="{Binding ImportEtabsDataCommand}"
+                                Style="{StaticResource SecondaryButton}"
+                                ToolTip="Lấy dữ liệu từ ETABS"/>
+
+                        <Button Grid.Column="2"
+                                Content="Xác nhận"
+                                Command="{Binding SaveCommand}"
+                                Style="{StaticResource PrimaryButton}"/>
+                    </Grid>
+                </StackPanel>
+            </Grid>
+        </Border>
+
+        <!-- ═══ CỘT PHẢI: Bảng kết quả ═══ -->
+        <Border Grid.Column="2"
+                Background="{StaticResource panelColorBrush}"
+                BorderBrush="{StaticResource winBorderColor1Brush}"
+                BorderThickness="1" CornerRadius="12"
+                ClipToBounds="True">
+
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+
+                <Border Grid.Row="0" Padding="20,16"
+                        BorderBrush="{StaticResource winBorderColor1Brush}"
+                        BorderThickness="0,0,0,1">
+                    <Grid>
+                        <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                            <Border Width="8" Height="8" CornerRadius="4"
+                                    Background="{StaticResource color9Brush}" Margin="0,0,10,0"/>
+                            <TextBlock Text="Danh sách nội lực"
+                                       FontSize="15" FontWeight="SemiBold"
+                                       FontFamily="Segoe UI"
+                                       Foreground="{StaticResource titleColor1Brush}"/>
+                        </StackPanel>
+                        <TextBlock HorizontalAlignment="Right" VerticalAlignment="Center"
+                                   FontSize="11" FontFamily="Segoe UI"
+                                   Foreground="{StaticResource plainTextColor1Brush}">
+                            <Run Text="Đơn vị: kN · m"/>
+                        </TextBlock>
+                    </Grid>
+                </Border>
+
+                <DataGrid Grid.Row="1"
+                          ItemsSource="{Binding ForceInputList}"
+                          Style="{StaticResource ModernDataGrid}"
+                          IsReadOnly="True" FontSize="13"
+                          Margin="8,4,8,8">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Tên móng" Binding="{Binding Mong.TenMong}" Width="1.3*"/>
+                        <DataGridTextColumn Header="B (m)" Binding="{Binding Mong.ChieuRongMong, StringFormat={}{0:N2}}" Width="*"/>
+                        <DataGridTextColumn Header="H (m)" Binding="{Binding Mong.ChieuSauChonMong, StringFormat={}{0:N2}}" Width="*"/>
+                        <DataGridTextColumn Header="M" Binding="{Binding Moment, StringFormat={}{0:N2}}" Width="*"/>
+                        <DataGridTextColumn Header="N" Binding="{Binding AxialForce, StringFormat={}{0:N2}}" Width="*"/>
+                        <DataGridTextColumn Header="Q" Binding="{Binding ShearForce, StringFormat={}{0:N2}}" Width="*"/>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </Grid>
+        </Border>
+    </Grid>
+</UserControl>

@@ -1,0 +1,201 @@
+﻿<UserControl x:Class="DALTUDTXD_ThietKeVaTinhToanMongBang_0302867_67TH3.Views.Page3View"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:local="clr-namespace:DALTUDTXD_ThietKeVaTinhToanMongBang_0302867_67TH3.Views"
+             mc:Ignorable="d"
+             d:DesignWidth="1000" Height="600">
+
+    <ScrollViewer VerticalScrollBarVisibility="Auto">
+        <StackPanel Background="Transparent">
+
+            <Border Style="{StaticResource CardBorder}" Margin="0,0,0,16">
+                <StackPanel>
+                    <TextBlock Text="Chọn nội lực" Style="{StaticResource SectionTitle}"
+                               HorizontalAlignment="Center" Margin="0,0,0,12"/>
+
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="2*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <ComboBox Grid.Column="0"
+                                  ItemsSource="{Binding ForceInputList}"
+                                  SelectedItem="{Binding SelectedForceInput}"
+                                  DisplayMemberPath="Mong.TenMong"
+                                  Style="{StaticResource ModernComboBox}"
+                                  Margin="0,0,16,0"/>
+
+                        <StackPanel Grid.Column="1" Orientation="Horizontal" VerticalAlignment="Center">
+                            <TextBlock Text="Chiều rộng (m):" Style="{StaticResource FieldLabel}" VerticalAlignment="Center" Margin="0,0,6,0"/>
+                            <TextBox Text="{Binding ChieuRongMong, StringFormat=N2}"
+                                     Style="{StaticResource ModernTextBox}" Width="100"/>
+                        </StackPanel>
+
+                        <StackPanel Grid.Column="2" Orientation="Horizontal" VerticalAlignment="Center" Margin="16,0,0,0">
+                            <TextBlock Text="Chiều sâu (m):" Style="{StaticResource FieldLabel}" VerticalAlignment="Center" Margin="0,0,6,0"/>
+                            <TextBox Text="{Binding ChieuSauChonMong, StringFormat=N2}"
+                                     Style="{StaticResource ModernTextBox}" Width="100"/>
+                        </StackPanel>
+                    </Grid>
+                </StackPanel>
+            </Border>
+
+            <Border Style="{StaticResource CardBorder}" Margin="0,0,0,16">
+                <StackPanel>
+                    <TextBlock Text="Kết quả Terzaghi" Style="{StaticResource SectionTitle}"
+                               HorizontalAlignment="Center" Margin="0,0,0,12"/>
+
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="30"/>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+
+                        <TextBlock Grid.Row="0" Grid.Column="0" Text="Sức chịu tải Terzaghi (T/m²):"
+                                   FontWeight="SemiBold" Foreground="{StaticResource titleColor1Brush}"
+                                   VerticalAlignment="Center" Margin="0,0,5,8"/>
+                        <TextBlock Grid.Row="0" Grid.Column="1" Text="{Binding TerzaghiP, StringFormat=N2}"
+                                   FontSize="16" Foreground="{StaticResource ShellAccentBrush}"
+                                   FontWeight="Bold" VerticalAlignment="Center" Margin="0,0,0,8"/>
+
+                        <TextBlock Grid.Row="1" Grid.Column="0" Text="Ptb =" Foreground="{StaticResource titleColor2Brush}"
+                                   HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,5,8"/>
+                        <TextBlock Grid.Row="1" Grid.Column="1" Text="{Binding PtbDisplayed, StringFormat=N2}"
+                                   Foreground="{StaticResource titleColor1Brush}" VerticalAlignment="Center" Margin="0,0,0,8"/>
+
+                        <TextBlock Grid.Row="1" Grid.Column="3" Text="&lt; [P] ="
+                                   Foreground="{StaticResource titleColor2Brush}" VerticalAlignment="Center" Margin="0,0,5,8"/>
+                        <TextBlock Grid.Row="1" Grid.Column="4" Text="{Binding TerzaghiP, StringFormat=N2}"
+                                   Foreground="{StaticResource titleColor1Brush}" VerticalAlignment="Center" Margin="0,0,5,8"/>
+                        <TextBlock Grid.Row="1" Grid.Column="5" Text="T/m²"
+                                   Foreground="{StaticResource titleColor2Brush}" VerticalAlignment="Center" Margin="0,0,5,8"/>
+                        <TextBlock Grid.Row="1" Grid.Column="6" Text="{Binding KetLuanDieuKien1}"
+                                   FontWeight="Bold" Foreground="{Binding DieuKien1Brush}"
+                                   VerticalAlignment="Center" Margin="10,0,0,8"/>
+
+                        <TextBlock Grid.Row="2" Grid.Column="0" Text="Pmax ="
+                                   Foreground="{StaticResource titleColor2Brush}" HorizontalAlignment="Right"
+                                   VerticalAlignment="Center" Margin="0,0,5,8"/>
+                        <TextBlock Grid.Row="2" Grid.Column="1" Text="{Binding PmaxDisplayed, StringFormat=N2}"
+                                   Foreground="{StaticResource titleColor1Brush}" VerticalAlignment="Center" Margin="0,0,0,8"/>
+
+                        <TextBlock Grid.Row="2" Grid.Column="3" Text="&lt; 1.2 × [P] ="
+                                   Foreground="{StaticResource titleColor2Brush}" VerticalAlignment="Center" Margin="0,0,5,8"/>
+                        <TextBlock Grid.Row="2" Grid.Column="4" Text="{Binding TerzaghiP120, StringFormat=N2}"
+                                   Foreground="{StaticResource titleColor1Brush}" VerticalAlignment="Center" Margin="0,0,5,8"/>
+                        <TextBlock Grid.Row="2" Grid.Column="5" Text="T/m²"
+                                   Foreground="{StaticResource titleColor2Brush}" VerticalAlignment="Center" Margin="0,0,5,8"/>
+                        <TextBlock Grid.Row="2" Grid.Column="6" Text="{Binding KetLuanDieuKien2}"
+                                   FontWeight="Bold" Foreground="{Binding DieuKien2Brush}"
+                                   VerticalAlignment="Center" Margin="10,0,0,8"/>
+
+                        <TextBlock Grid.Row="3" Grid.Column="0" Text="ĐK kinh tế:"
+                                   Foreground="{StaticResource titleColor2Brush}" HorizontalAlignment="Right"
+                                   VerticalAlignment="Center" Margin="0,0,5,0"/>
+                        <TextBlock Grid.Row="3" Grid.Column="1" Text="(1.2×[P] - Pmax) / 1.2×[P]"
+                                   Foreground="{StaticResource titleColor2Brush}" VerticalAlignment="Center"/>
+                        <TextBlock Grid.Row="3" Grid.Column="3" Text="&lt; 15%" FontWeight="Bold"
+                                   Foreground="{StaticResource titleColor1Brush}" VerticalAlignment="Center" Margin="0,0,5,0"/>
+                        <TextBlock Grid.Row="3" Grid.Column="4" Text="{Binding ChenhLechKinhTe, StringFormat=N2}"
+                                   Foreground="{StaticResource titleColor1Brush}" VerticalAlignment="Center" Margin="0,0,5,0"/>
+                        <TextBlock Grid.Row="3" Grid.Column="5" Text="%"
+                                   Foreground="{StaticResource titleColor2Brush}" VerticalAlignment="Center" Margin="0,0,5,0"/>
+                        <TextBlock Grid.Row="3" Grid.Column="6" Text="{Binding KetLuanKinhTe}"
+                                   FontWeight="Bold" Foreground="{Binding KinhTeBrush}"
+                                   VerticalAlignment="Center" Margin="10,0,0,0"/>
+                    </Grid>
+                </StackPanel>
+            </Border>
+
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <StackPanel Grid.Column="0" Margin="0,0,8,0">
+                    <Border Style="{StaticResource CardBorder}" Margin="0,0,0,16">
+                        <StackPanel>
+                            <TextBlock Text="Kết luận thiết kế" Style="{StaticResource SectionTitle}"
+                                       HorizontalAlignment="Center" Margin="0,0,0,10"/>
+                            <TextBlock Text="{Binding KetLuanTongThe}" FontSize="13"
+                                       Foreground="{StaticResource titleColor2Brush}"
+                                       HorizontalAlignment="Center" TextWrapping="Wrap"
+                                       TextAlignment="Center" LineHeight="20"/>
+                        </StackPanel>
+                    </Border>
+
+                    <Border Style="{StaticResource CardBorder}">
+                        <StackPanel>
+                            <TextBlock Text="Tính toán cốt thép" Style="{StaticResource SectionTitle}"
+                                       HorizontalAlignment="Center" Margin="0,0,0,15"/>
+
+                            <StackPanel Orientation="Horizontal" Margin="0,0,0,12">
+                                <TextBlock Text="Đường kính thanh (mm):" Style="{StaticResource FieldLabel}"
+                                           VerticalAlignment="Center" Margin="0,0,10,0"/>
+                                <ComboBox ItemsSource="{Binding SteelDiameters}"
+                                          SelectedItem="{Binding SelectedSteelDiameter, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                          Style="{StaticResource ModernComboBox}"/>
+                            </StackPanel>
+
+                            <StackPanel Orientation="Horizontal">
+                                <StackPanel Orientation="Horizontal" Margin="0,0,20,0">
+                                    <TextBlock Text="Số thanh:" Style="{StaticResource FieldLabel}" VerticalAlignment="Center" Margin="0,0,5,0"/>
+                                    <TextBlock Text="{Binding CalculatedSteelBars}" FontWeight="Bold"
+                                               Foreground="{StaticResource ShellAccentBrush}" VerticalAlignment="Center"/>
+                                    <TextBlock Text=" thanh" Style="{StaticResource FieldLabel}" VerticalAlignment="Center" Margin="4,0,0,0"/>
+                                </StackPanel>
+
+                                <StackPanel Orientation="Horizontal" Margin="0,0,20,0">
+                                    <TextBlock Text="Diện tích:" Style="{StaticResource FieldLabel}" VerticalAlignment="Center" Margin="0,0,5,0"/>
+                                    <TextBlock Text="{Binding CalculatedSteelArea}" FontWeight="Bold"
+                                               Foreground="{StaticResource ShellAccentBrush}" VerticalAlignment="Center"/>
+                                    <TextBlock Text=" cm²" Style="{StaticResource FieldLabel}" VerticalAlignment="Center" Margin="4,0,0,0"/>
+                                </StackPanel>
+
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="Khoảng cách:" Style="{StaticResource FieldLabel}" VerticalAlignment="Center" Margin="0,0,5,0"/>
+                                    <TextBlock Text="{Binding CalculatedSteelSpacing}" FontWeight="Bold"
+                                               Foreground="{StaticResource ShellAccentBrush}" VerticalAlignment="Center"/>
+                                    <TextBlock Text=" mm" Style="{StaticResource FieldLabel}" VerticalAlignment="Center" Margin="4,0,0,0"/>
+                                </StackPanel>
+                            </StackPanel>
+                        </StackPanel>
+                    </Border>
+                </StackPanel>
+
+                <Border Grid.Column="1" Style="{StaticResource CardBorder}" Margin="8,0,0,0" MinHeight="280">
+                    <Grid>
+                        <TextBlock Text="Mặt cắt móng" Style="{StaticResource SectionTitle}" Margin="0,0,0,8"/>
+
+                        <Viewbox Stretch="Uniform" Margin="10,36,10,10">
+                            <Canvas Width="380" Height="220" Background="Transparent">
+                                <Path Data="{Binding FoundationOutline}" Fill="#3D3830" Stroke="{StaticResource plainTextColor1Brush}" StrokeThickness="1.5"/>
+                                <Path Data="{Binding GeometryGroup_LongRebar}" Fill="{StaticResource ShellAccentBrush}" Stroke="{StaticResource ShellAccentBrush}" StrokeThickness="1"/>
+                                <TextBlock Text="{Binding CalculatedSteelBars, StringFormat='{}{0} thanh'}"
+                                           Canvas.Bottom="-5" Canvas.Left="140"
+                                           Foreground="{StaticResource ShellAccentBrush}"
+                                           FontSize="14" FontWeight="Bold"/>
+                            </Canvas>
+                        </Viewbox>
+                    </Grid>
+                </Border>
+            </Grid>
+        </StackPanel>
+    </ScrollViewer>
+</UserControl>

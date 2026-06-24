@@ -1,0 +1,58 @@
+﻿<UserControl x:Class="DALTUDTXD_ThietKeVaTinhToanMongBang_0302867_67TH3.Views.Page5View"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:DALTUDTXD_ThietKeVaTinhToanMongBang_0302867_67TH3.Views"
+             xmlns:vm="clr-namespace:DALTUDTXD_ThietKeVaTinhToanMongBang_0302867_67TH3.ViewModels"
+             mc:Ignorable="d" 
+             d:DesignHeight="600" d:DesignWidth="800">
+
+    <UserControl.Resources>
+        <vm:StatusToColorConverter x:Key="StatusToColorConverter"/>
+    </UserControl.Resources>
+
+    <ScrollViewer VerticalScrollBarVisibility="Auto">
+        <StackPanel Margin="4">
+
+            <Border Style="{StaticResource CardBorder}">
+                <StackPanel>
+                    <Grid Margin="0,0,0,12">
+                        <TextBlock Text="Bảng tổng hợp kiểm tra sức chịu tải"
+                                   Style="{StaticResource SectionTitle}"/>
+                        <Button Content="Tính toán lại" HorizontalAlignment="Right"
+                                Style="{StaticResource PrimaryButton}"
+                                Command="{Binding CalculateAllCommand}"/>
+                    </Grid>
+
+                    <DataGrid ItemsSource="{Binding CalculationResults}"
+                              Style="{StaticResource ModernDataGrid}"
+                              IsReadOnly="True" FontSize="13">
+
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Tên móng" Binding="{Binding TenMong}" Width="100"/>
+                            <DataGridTextColumn Header="Ptb (T/m²)" Binding="{Binding Ptb, StringFormat=N2}" Width="*"/>
+                            <DataGridTextColumn Header="Pmax (T/m²)" Binding="{Binding Pmax, StringFormat=N2}" Width="*"/>
+                            <DataGridTextColumn Header="Pmin (T/m²)" Binding="{Binding Pmin, StringFormat=N2}" Width="*"/>
+                            <DataGridTextColumn Header="P0max (T/m²)" Binding="{Binding P0max, StringFormat=N2}" Width="*"/>
+                            <DataGridTextColumn Header="P0 min (T/m²)" Binding="{Binding P0min}" Width="*"/>
+                            <DataGridTextColumn Header="P đ. thủng" Binding="{Binding PDamThung, StringFormat=N2}" Width="*"/>
+                            <DataGridTextColumn Header="P chống ĐT" Binding="{Binding PChongDamThung, StringFormat=N2}" Width="*"/>
+                            <DataGridTextColumn Header="Độ lún S (cm)" Binding="{Binding DoLun, StringFormat=N2}"
+                                                FontWeight="Bold" Foreground="{StaticResource color3Brush}" Width="*"/>
+                            <DataGridTemplateColumn Header="Ghi chú" Width="100">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <TextBlock Text="{Binding GhiChu}" FontWeight="Bold"
+                                                   HorizontalAlignment="Center"
+                                                   Foreground="{Binding GhiChu, Converter={StaticResource StatusToColorConverter}}"/>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </StackPanel>
+            </Border>
+        </StackPanel>
+    </ScrollViewer>
+</UserControl>
