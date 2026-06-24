@@ -8,6 +8,6 @@ Thành viên 2: Lương Xuân Hiếu - 67TH3 - 0020367 - 0962350263 - hieuluong5
 
 Tính Năng phần mềm
 1. Ứng dụng công nghệ:
-2. Nghiên cứu và khai thác sâu giao diện lập trình ứng dụng CSI OAPI để tạo kênh tương tác trực tiếp với phần mềm ETABS, tự động lấy toàn bộ thông tin về lưới cột, các trường hợp tải trọng và phản lực chân cột một cách chính xác mà không cần thông qua file text hay excel trung gian.
-3. Nội dung tính toán:
-4. Xây dựng chương trình tính toán tự động kiểm tra kích thước đáy móng băng, xác định nội lực dầm móng và thiết kế diện tích cốt thép bám sát các điều kiện kỹ thuật của tiêu chuẩn TCVN 5574:2018.
+Nghiên cứu và khai thác sâu giao diện lập trình ứng dụng CSI OAPI để tạo kênh tương tác trực tiếp với phần mềm ETABS, tự động lấy toàn bộ thông tin về lưới cột, các trường hợp tải trọng và phản lực chân cột một cách chính xác mà không cần thông qua file text hay excel trung gian.
+2. Nội dung tính toán:
+Xây dựng chương trình tính toán tự động kiểm tra kích thước đáy móng băng, xác định nội lực dầm móng và thiết kế diện tích cốt thép bám sát các điều kiện kỹ thuật của tiêu chuẩn TCVN 5574:2018.
